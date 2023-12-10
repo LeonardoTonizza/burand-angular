@@ -1,0 +1,25 @@
+/**
+ * Valida o formato do nome completo de um controle de formulário fornecido.
+ * Um nome completo deve conter pelo menos duas palavras e a segunda palavra deve ter mais de um caractere.
+ *
+ * @example <caption>Valide se o campo corresponde a um nome com sobrenome</caption>
+ * ```typescript
+ * const control = new FormControl('John', fullNameValidator);
+ *
+ * console.log(control.errors); // {fullNameInvalid: true}
+ * ```
+ *
+ * @param control - O `AbstractControl` do formulário a ser validado.
+ * @returns Retorna um objeto de erro com a chave `fullNameInvalid` se o nome completo for inválido, caso contrário retorna `null`.
+ */
+export function fullNameValidator(control) {
+    if (!control.value) {
+        return null;
+    }
+    const split = String(control.value).split(' ');
+    if (split.length > 1 && split[1].length > 1) {
+        return null;
+    }
+    return { fullNameInvalid: true };
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZnVsbE5hbWUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvdmFsaWRhdG9ycy9mdWxsTmFtZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTs7Ozs7Ozs7Ozs7OztHQWFHO0FBQ0gsTUFBTSxVQUFVLGlCQUFpQixDQUFDLE9BQXdCO0lBQ3hELElBQUksQ0FBQyxPQUFPLENBQUMsS0FBSyxFQUFFO1FBQ2xCLE9BQU8sSUFBSSxDQUFDO0tBQ2I7SUFFRCxNQUFNLEtBQUssR0FBRyxNQUFNLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQztJQUMvQyxJQUFJLEtBQUssQ0FBQyxNQUFNLEdBQUcsQ0FBQyxJQUFJLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxNQUFNLEdBQUcsQ0FBQyxFQUFFO1FBQzNDLE9BQU8sSUFBSSxDQUFDO0tBQ2I7SUFFRCxPQUFPLEVBQUUsZUFBZSxFQUFFLElBQUksRUFBRSxDQUFDO0FBQ25DLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBYnN0cmFjdENvbnRyb2wsIFZhbGlkYXRpb25FcnJvcnMgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XHJcblxyXG4vKipcclxuICogVmFsaWRhIG8gZm9ybWF0byBkbyBub21lIGNvbXBsZXRvIGRlIHVtIGNvbnRyb2xlIGRlIGZvcm11bMOhcmlvIGZvcm5lY2lkby5cclxuICogVW0gbm9tZSBjb21wbGV0byBkZXZlIGNvbnRlciBwZWxvIG1lbm9zIGR1YXMgcGFsYXZyYXMgZSBhIHNlZ3VuZGEgcGFsYXZyYSBkZXZlIHRlciBtYWlzIGRlIHVtIGNhcmFjdGVyZS5cclxuICpcclxuICogQGV4YW1wbGUgPGNhcHRpb24+VmFsaWRlIHNlIG8gY2FtcG8gY29ycmVzcG9uZGUgYSB1bSBub21lIGNvbSBzb2JyZW5vbWU8L2NhcHRpb24+XHJcbiAqIGBgYHR5cGVzY3JpcHRcclxuICogY29uc3QgY29udHJvbCA9IG5ldyBGb3JtQ29udHJvbCgnSm9obicsIGZ1bGxOYW1lVmFsaWRhdG9yKTtcclxuICpcclxuICogY29uc29sZS5sb2coY29udHJvbC5lcnJvcnMpOyAvLyB7ZnVsbE5hbWVJbnZhbGlkOiB0cnVlfVxyXG4gKiBgYGBcclxuICpcclxuICogQHBhcmFtIGNvbnRyb2wgLSBPIGBBYnN0cmFjdENvbnRyb2xgIGRvIGZvcm11bMOhcmlvIGEgc2VyIHZhbGlkYWRvLlxyXG4gKiBAcmV0dXJucyBSZXRvcm5hIHVtIG9iamV0byBkZSBlcnJvIGNvbSBhIGNoYXZlIGBmdWxsTmFtZUludmFsaWRgIHNlIG8gbm9tZSBjb21wbGV0byBmb3IgaW52w6FsaWRvLCBjYXNvIGNvbnRyw6FyaW8gcmV0b3JuYSBgbnVsbGAuXHJcbiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gZnVsbE5hbWVWYWxpZGF0b3IoY29udHJvbDogQWJzdHJhY3RDb250cm9sKTogVmFsaWRhdGlvbkVycm9ycyB8IG51bGwge1xyXG4gIGlmICghY29udHJvbC52YWx1ZSkge1xyXG4gICAgcmV0dXJuIG51bGw7XHJcbiAgfVxyXG5cclxuICBjb25zdCBzcGxpdCA9IFN0cmluZyhjb250cm9sLnZhbHVlKS5zcGxpdCgnICcpO1xyXG4gIGlmIChzcGxpdC5sZW5ndGggPiAxICYmIHNwbGl0WzFdLmxlbmd0aCA+IDEpIHtcclxuICAgIHJldHVybiBudWxsO1xyXG4gIH1cclxuXHJcbiAgcmV0dXJuIHsgZnVsbE5hbWVJbnZhbGlkOiB0cnVlIH07XHJcbn1cclxuIl19
